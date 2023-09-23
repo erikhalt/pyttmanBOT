@@ -2,6 +2,8 @@ import logging
 import os
 from pathlib import Path
 
+import chatbot.abilities.hello_world.ability
+from enviroment import DISCORD_TOKEN, DISCORD_GUILD
 
 """
     Welcome to the settings module! Please take a minute to read
@@ -67,7 +69,8 @@ MIDDLEWARE = {
 # and select "Copy / Paste Special" -> "Copy Reference" and paste it below.
 
 # ABILITIES = ["my_app.abilities.filename.AbilityClassName"]
-ABILITIES = []
+ABILITIES = ['chatbot.abilities.hello_world.ability.HelloWorld',
+             ]
 
 
 # Define the client which your Pyttman app uses as its front end here.
@@ -80,7 +83,17 @@ ABILITIES = []
 # TIP! Unsure of what to put here?
 # Check out the documentation:
 # https://github.com/dotchetter/Pyttman/wiki/Clients
-CLIENT = {}
+CLIENT = {
+    "class": "pyttman.clients.community.discord.client.DiscordClient",
+    "token": DISCORD_TOKEN,
+    "guild": DISCORD_GUILD,
+    "discord_intent_flags": {
+        "message_content": True,
+        "dm_messages": True,
+        "guild_messages": True,
+        "messages": True
+    }
+}
 
 # No need to change this setting
 APP_BASE_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
