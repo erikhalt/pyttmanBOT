@@ -17,3 +17,10 @@ spec:
       containers:
       - name: {{ .Values.appname }}
         image: {{ .Values.image }}
+        env:
+          - name: DISCORD_TOKEN
+            value: {{ .Values.envar.DISCORD_TOKEN }}
+          - name: DISCORD_GUILD
+            value: {{ .Values.envar.DISCORD_GUILD }}
+          - name: DEBUG
+            value: {{ .Values.envar.DEBUG }}
