@@ -23,9 +23,9 @@ jobs:
 
       - name: Log in to docker hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-          with:
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.DOCKERHUB_KEY }}
+        with:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.DOCKERHUB_KEY }}
 
       - name: tag image
         run: docker tag python-docker erikhalt/${{ env.PROJECT_NAME }}:${{ env.TAG }}
