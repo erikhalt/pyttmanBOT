@@ -35,6 +35,7 @@ jobs:
 
   remove_deployment:
     #Using this to let Argo pull new image when a new image are pushed to docker hub
+    needs: build_image
     name: removing old deployment in cluster
     runs-on: ubuntu-latest
     steps:
