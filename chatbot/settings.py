@@ -83,8 +83,12 @@ ABILITIES = ['chatbot.abilities.hello_world.ability.HelloWorld',
 # TIP! Unsure of what to put here?
 # Check out the documentation:
 # https://github.com/dotchetter/Pyttman/wiki/Clients
-debug = os.getenv(('DEBUG', 'True') == "True")
-if debug:
+debug_enabled = (os.getenv('DEBUG', 'True') == "True")
+if debug_enabled:
+    CLIENT = {
+        "class": "pyttman.clients.builtin.cli.CliClient"
+    }
+else:
     CLIENT = {
         "class": "pyttman.clients.community.discord.client.DiscordClient",
         "token": os.getenv('DISCORD_TOKEN'),
@@ -95,10 +99,6 @@ if debug:
             "guild_messages": True,
             "messages": True
         }
-    }
-else:
-    CLIENT = {
-        "class": "pyttman.clients.builtin.cli.CliClient"
     }
 
 DATABASE = {
