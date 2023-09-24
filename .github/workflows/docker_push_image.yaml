@@ -32,3 +32,23 @@ jobs:
 
       - name: push image to dockerhub
         run: docker push erikhalt/${{ env.PROJECT_NAME }}:${{ env.TAG }}
+
+  remove_deployment:
+    #Using this to let Argo pull new image when a new image are pushed to docker hub
+    name: removing old deployment in cluster
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_REGISTRY_KEY }}
+
+      - name: Save DigitalOcean kubeconfig with short-lived credentials
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 clustermedrasmus
+
+      - name: Set kubernetes namespace
+        run: kubectl config set-context --current --namespace=chatbot
+
+      - name: scale deployment
+        run: kubectl scale --replicas=3 deployment/chatbot-deployment
+
