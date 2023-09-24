@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 import chatbot.abilities.hello_world.ability
-from enviroment import DISCORD_TOKEN, DISCORD_GUILD
+#from enviroment import DISCORD_TOKEN, DISCORD_GUILD
 
 """
     Welcome to the settings module! Please take a minute to read
@@ -85,8 +85,8 @@ ABILITIES = ['chatbot.abilities.hello_world.ability.HelloWorld',
 # https://github.com/dotchetter/Pyttman/wiki/Clients
 CLIENT = {
     "class": "pyttman.clients.community.discord.client.DiscordClient",
-    "token": DISCORD_TOKEN,
-    "guild": DISCORD_GUILD,
+    "token": 'DISCORD_TOKEN',
+    "guild": 'DISCORD_GUILD',
     "discord_intent_flags": {
         "message_content": True,
         "dm_messages": True,
@@ -94,7 +94,9 @@ CLIENT = {
         "messages": True
     }
 }
-
+DATABASE = {
+    ""
+}
 # No need to change this setting
 APP_BASE_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
 

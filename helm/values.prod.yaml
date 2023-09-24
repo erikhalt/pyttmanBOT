@@ -1,0 +1,6 @@
+enviroment: dev
+appname: chatbot
+deploymentname: chatbot-deployment
+image: erikhalt/chatbot:latest
+replicas: 1
+

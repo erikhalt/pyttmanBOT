@@ -1,3 +1,4 @@
+from pyttman import app
 from pyttman.core.containers import Reply, ReplyStream, Message
 from pyttman.core.intent import Intent
 
