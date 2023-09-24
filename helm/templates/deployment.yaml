@@ -24,4 +24,4 @@ spec:
           - name: DISCORD_GUILD
             value: {{ .Values.envar.DISCORD_GUILD }}
           - name: DEBUG
-            value: {{ .Values.envar.DEBUG }}
+            value: {{ .Values.envar.DEBUG | quote }}
